@@ -16,6 +16,8 @@
 		B2754B9E1BA72B60007EB87D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2754B9D1BA72B60007EB87D /* Images.xcassets */; };
 		B2754BA11BA72B60007EB87D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2754B9F1BA72B60007EB87D /* LaunchScreen.xib */; };
 		B2754BAD1BA72B60007EB87D /* IOSForWxcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B2754BAC1BA72B60007EB87D /* IOSForWxcTests.m */; };
+		B2E65E9B1BA878E400DF888D /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E65E9A1BA878E400DF888D /* Utility.m */; };
+		B2E65E9F1BA87F8200DF888D /* HWIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E65E9E1BA87F8200DF888D /* HWIndicator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,10 @@
 		B2754BA61BA72B60007EB87D /* IOSForWxcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSForWxcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2754BAB1BA72B60007EB87D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2754BAC1BA72B60007EB87D /* IOSForWxcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOSForWxcTests.m; sourceTree = "<group>"; };
+		B2E65E991BA878E400DF888D /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		B2E65E9A1BA878E400DF888D /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		B2E65E9D1BA87F8200DF888D /* HWIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWIndicator.h; sourceTree = "<group>"; };
+		B2E65E9E1BA87F8200DF888D /* HWIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWIndicator.m; sourceTree = "<group>"; };
 		C15451B8EFF66A984FEA9C67 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -108,6 +114,7 @@
 		B2754B8C1BA72B60007EB87D /* IOSForWxc */ = {
 			isa = PBXGroup;
 			children = (
+				B2E65E9C1BA87F5900DF888D /* Utility */,
 				B2754B911BA72B60007EB87D /* AppDelegate.h */,
 				B2754B921BA72B60007EB87D /* AppDelegate.m */,
 				B2754B941BA72B60007EB87D /* FirstViewController.h */,
@@ -118,6 +125,8 @@
 				B2754B9D1BA72B60007EB87D /* Images.xcassets */,
 				B2754B9F1BA72B60007EB87D /* LaunchScreen.xib */,
 				B2754B8D1BA72B60007EB87D /* Supporting Files */,
+				B2E65E991BA878E400DF888D /* Utility.h */,
+				B2E65E9A1BA878E400DF888D /* Utility.m */,
 			);
 			path = IOSForWxc;
 			sourceTree = "<group>";
@@ -146,6 +155,15 @@
 				B2754BAB1BA72B60007EB87D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B2E65E9C1BA87F5900DF888D /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				B2E65E9D1BA87F8200DF888D /* HWIndicator.h */,
+				B2E65E9E1BA87F8200DF888D /* HWIndicator.m */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,8 +301,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2E65E9F1BA87F8200DF888D /* HWIndicator.m in Sources */,
 				B2754B991BA72B60007EB87D /* SecondViewController.m in Sources */,
 				B2754B931BA72B60007EB87D /* AppDelegate.m in Sources */,
+				B2E65E9B1BA878E400DF888D /* Utility.m in Sources */,
 				B2754B961BA72B60007EB87D /* FirstViewController.m in Sources */,
 				B2754B901BA72B60007EB87D /* main.m in Sources */,
 			);

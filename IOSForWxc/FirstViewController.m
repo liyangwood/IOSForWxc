@@ -16,6 +16,7 @@
 
 @implementation FirstViewController
 
+@synthesize indicator;
 
 
 - (void)viewDidLoad {
@@ -23,18 +24,25 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     
-    NSArray *list = [NSArray arrayWithObjects:@"武汉",@"上海",@"北京",@"深圳",@"广州",@"重庆",@"香港",@"台海",@"天津", nil];
-    self.dataList = list;
+
     
     //self.tb = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     
     
     self.tb.rowHeight = 40;
-    
-    self.tb.dataSource = self;
+
     self.tb.delegate = self;
     
     
+    //init indicator
+    if(nil == indicator){
+        indicator = [Utility getIndicator:self.view];
+    
+    }
+    
+    [indicator startAnimating];
+    [self startLoadData];
+    self.tb.dataSource = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,11 +60,38 @@
 }
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
     
-    cell.textLabel.text = self.dataList[indexPath.row];
+    NSLog(@"%ld====%@", (long)indexPath.row, self.dataList[indexPath.row]);
+    NSDictionary *rs = self.dataList[indexPath.row];
+    cell.textLabel.text = [rs objectForKey:@"title"];
+    if([rs objectForKey:@"images"]){
+        NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[rs objectForKey:@"images"][0]]];
+        cell.imageView.image = [UIImage imageWithData:imgData];
+    }
     
     return cell;
+}
+
+-(void) startLoadData{
+    NSString *url = @"/service/api/?act=index&channel=news&pagesize=25&version=2&format=json";
+    MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:@"api.wenxuecity.com" customHeaderFields:nil];
+    
+    MKNetworkOperation *op = [engine operationWithPath:url];
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        NSData *data = [completedOperation responseData];
+        NSDictionary *list = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        self.dataList = [list objectForKey:@"list"];
+        
+        
+        [indicator stopAnimating];
+        [self.tb reloadData];
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        NSLog(@"===");
+    }];
+    
+    [engine enqueueOperation:op];
+    
 }
 
 
